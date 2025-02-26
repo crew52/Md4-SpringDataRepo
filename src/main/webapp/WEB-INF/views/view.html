@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="/layout :: head">
+  <title>DetailCustomer</title>
+</head>
+<body>
+<h3>View Emp</h3>
+<p>
+  <a th:href="@{/emp}">
+    Back to customer list
+  </a>
+</p>
+<div id="detail" th:if="${employee.isPresent()}">
+  <div class="cus-detail">
+    <label>Name:</label>
+    <label th:text="${employee.get().name}"></label>
+  </div>
+  <div class="cus-detail">
+    <label>Email:</label>
+    <label th:text="${employee.get().email}"></label>
+  </div>
+  <div class="cus-detail">
+    <label>Address:</label>
+    <label th:text="${employee.get().address}"></label>
+  </div>
+</div>
+<p th:unless="${employee.isPresent()}">Employee not found</p>
+<footer th:replace="/layout :: footer"></footer>
+</body>
+</html>
