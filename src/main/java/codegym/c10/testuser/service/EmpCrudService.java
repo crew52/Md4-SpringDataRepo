@@ -3,6 +3,8 @@ package codegym.c10.testuser.service;
 import codegym.c10.testuser.model.Employee;
 import codegym.c10.testuser.repository.EmpCRUD;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -31,5 +33,15 @@ public class EmpCrudService implements IEmService{
     @Override
     public void remove(Long id) {
         repository.deleteById(id);
+    }
+
+    @Override
+    public Page<Employee> findAll(Pageable pageable) {
+        return repository.findAll(pageable);
+    }
+
+    @Override
+    public Page<Employee> findAllByNameContaining(Pageable pageable, String name) {
+        return repository.findAllByNameContaining(pageable, name);
     }
 }

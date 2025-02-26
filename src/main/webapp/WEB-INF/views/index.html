@@ -39,6 +39,17 @@
   </tr>
   </tbody>
 </table>
+<!-- Pagination -->
+<div>
+  <a class="btn btn-primary" th:if="${employees.hasPrevious()}"
+     th:href="@{'/emp'(page=${employees.number - 1}, size=${employees.size})}">Previous</a>
+
+  <span th:text="${employees.number + 1}"></span> |
+  <span th:text="${employees.totalPages}"></span>
+
+  <a class="btn btn-primary" th:if="${employees.hasNext()}"
+     th:href="@{'/emp'(page=${employees.number + 1}, size=${employees.size})}">Next</a>
+</div>
 <footer th:replace="/layout :: footer"></footer>
 </body>
 </html>
